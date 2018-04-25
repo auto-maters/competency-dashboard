@@ -2,10 +2,10 @@ const express = require('express');
 
 const router = express.Router();
 
-/* GET home page. */
+/* Upload file route*/
 
-router.get('/', (req, res) => {
-  res.render('index', { title: 'Express' });
+router.post('/upload', (req, res) => {
+  res.send('respond with a resource');
 });
 
 module.exports = router;
