@@ -4,7 +4,7 @@ const router = express.Router();
 
 /* Upload file route*/
 
-router.post('/upload', (req, res) => {
+router.get('/upload', (req, res) => {
   res.send('respond with a resource');
 });
 
