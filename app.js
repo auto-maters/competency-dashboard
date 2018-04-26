@@ -10,6 +10,11 @@ const reportsRouter = require('./lib/routes/reports');
 
 const app = express();
 
+if (app.get('env') === 'development') {
+  /* eslint-disable global-require */
+  require('dotenv').config();
+}
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');

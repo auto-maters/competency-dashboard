@@ -72,6 +72,16 @@ gulp.task('babelify-js', () => {
     .pipe(gulp.dest('lib/public/javascripts'));
 });
 
+/*  The purpose of this task is to minify any user-built Stylesheets that the
+    project uses. */
+gulp.task('minify-css', () => {
+  return gulp.src('src/public/stylesheets/*.css')
+    .pipe(cleanCSS({
+      compatibility: 'ie8',
+    }))
+    .pipe(gulp.dest('lib/public/stylesheets'));
+});
+
 /*  The purpose of this task is to copy any user-built templates that the
 project uses. */
 gulp.task('copy-html', () => {
@@ -89,7 +99,8 @@ gulp.task('watch', () => {
   gulp.watch(['./src/public/images/**/*'], ['compress-image']);
   gulp.watch(['./src/public/vendor/**/*.js'], ['minify-js-vendor']);
   gulp.watch(['./src/public/vendor/**/*.css'], ['minify-css-vendor']);
-  gulp.watch(['./src/public/js/*.js'], ['babelify-js']);
+  gulp.watch(['./src/public/javascripts/*.js'], ['babelify-js']);
+  gulp.watch(['./src/public/stylesheets/*.css'], ['minify-css']);
   gulp.watch(['./src/public/templates/*.html'], ['copy-html']);
 });
 
@@ -98,6 +109,6 @@ gulp.task('watch', () => {
 /* START TASK */
 
 // Make my default task to watch both folders
-gulp.task('default', ['watch', 'babelify-server-controllers', 'babelify-routes', 'compress-image', 'minify-js-vendor', 'minify-css-vendor', 'babelify-js', 'copy-html']);
+gulp.task('default', ['watch', 'babelify-server-controllers', 'babelify-routes', 'compress-image', 'minify-js-vendor', 'minify-css-vendor', 'babelify-js', 'minify-css', 'copy-html']);
 
 /*  -----------------------  */
