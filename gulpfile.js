@@ -47,7 +47,7 @@ gulp.task('compress-image', () => {
     project uses. */
 gulp.task('minify-js-vendor', () => {
   pump([
-    gulp.src('src/public/vendor/*.js'),
+    gulp.src('src/public/vendor/**/*.js'),
     uglify(),
     gulp.dest('lib/public/vendor'),
   ]);
@@ -55,7 +55,7 @@ gulp.task('minify-js-vendor', () => {
 
 /*  The purpose of this task is to minify CSS code that the project uses. */
 gulp.task('minify-css-vendor', () => {
-  return gulp.src('src/public/vendor/*.css')
+  return gulp.src('src/public/vendor/**/*.css')
     .pipe(cleanCSS({
       compatibility: 'ie8',
     }))
