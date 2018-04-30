@@ -34,15 +34,16 @@
                 <ul class="right hide-on-med-and-down">
                     <li class="black-text text-lighten-3"><a href="/">Home</a></li>            
                     <li class="black-text text-lighten-3"><a href="/">Search Data</a></li>    
-                    <li class="black-text text-lighten-3"><a ng-href="/upload">Upload Data</a></li>
+                    <li class="black-text text-lighten-3"><a href="/upload">Upload Data</a></li>
                 </ul>
             </div>
         </nav>          
         <main>
             <div ng-view=""></div>
         </main>
-        <!--<script src="../js/admin-controller.js"></script>	
-        <script src="../js/search-products-controller.js"></script>-->
+        <script src="../javascripts/upload-controller.js"></script>	
+        <script src="../javascripts/angular-factories.js"></script>
+        <script src="../vendor/xlsx/xlsx.full.min.js"></script>
     </body>
 
 </html>

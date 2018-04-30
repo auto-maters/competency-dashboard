@@ -25,9 +25,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'lib/public')));
 
+// All server based routes
 app.use('/', indexRouter);
 app.use('/data', dataRouter);
 app.use('/reports', reportsRouter);
+
+// This route enables HTML5Mode by forwarding missing files to the index.html
+app.all('/*', (req, res) => {
+  res.sendFile('index.html', { root: 'views' });
+});
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
