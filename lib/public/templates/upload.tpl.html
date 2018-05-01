@@ -1,18 +1,11 @@
-<!-- <div>
-    <form action="fileupload" method="post" encType="multipart/form-data">
-        <input type="file" name="filetoupload" />
-        <br/>
-        <input type="submit">
-    </form>
-</div> -->
-
 <div class="container">
+    <h4 class="header brown-text">Upload Competency File</h4>
     <div class="row">
-        <div class="col s8 m6 l6">
+        <div class="col s12 center">
             <div class="file-field input-field">
                 <div class="btn">
                     <span>File</span>
-                    <input type="file" accept=".xls,.xlsx,.ods" fileread="" opts="result" multiple="false">
+                    <input type="file" accept=".xls,.xlsx,.ods" fileread opts="result" multiple="false">
                 </div>
                 <div class="file-path-wrapper">
                     <input class="file-path validate" type="text" placeholder="Upload file">
@@ -24,7 +17,15 @@
         </div> -->
     </div>
     <div class="row">
-        <div class="col s12">
+        <div class="col s12 m6 l6">
+            <div class="progress center" ng-hide="result.data.length <= 0">
+                    <div class="indeterminate"></div>
+            
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 center">
             <input id="btnUpload" class="waves-effect waves-light btn" type="button" value="Upload" ng-click="uploadCompetencyData()" ng-show="result.data.length > 0" ng-disabled="!result.data.length > 0" />
         </div>
     </div>
