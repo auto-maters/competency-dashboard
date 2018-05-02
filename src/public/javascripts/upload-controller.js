@@ -12,11 +12,11 @@ coreApp.controller('uploadController', ['$scope', '$timeout', 'CompetencyData', 
       $scope.showLoader = true;
       CompetencyData.uploadCompData({}).then((responseCode) => {
         $scope.showLoader = false;
-      //   $timeout(() => {
-      //     $scope.showLoader = false;
-      //   }, 4000);
-      //   console.log(responseCode);
-      // });
+        $timeout(() => {
+          $scope.showLoader = false;
+        }, 4000);
+        console.log(responseCode);
+      });
     }
   };
 }]);
