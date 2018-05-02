@@ -1,15 +1,22 @@
 /* global angular coreApp XLSX Materialize */
 
-coreApp.controller('uploadController', ['$scope', 'CompetencyData', ($scope, CompetencyData) => {
+coreApp.controller('uploadController', ['$scope', '$timeout', 'CompetencyData', ($scope, $timeout, CompetencyData) => {
   angular.isUndefinedOrNullOrEmpty = function isUndefinedOrNullOrEmpty(val) {
     return angular.isUndefined(val) || val === null || val === '';
   };
 
+  $scope.showLoader = false;
+
   $scope.uploadCompetencyData = function uploadCompetencyData() {
     if (!angular.isUndefinedOrNullOrEmpty($scope.result.data)) {
-      CompetencyData.uploadCompData($scope.result.data).then((responseCode) => {
-        console.log(responseCode);
-      });
+      $scope.showLoader = true;
+      CompetencyData.uploadCompData({}).then((responseCode) => {
+        $scope.showLoader = false;
+      //   $timeout(() => {
+      //     $scope.showLoader = false;
+      //   }, 4000);
+      //   console.log(responseCode);
+      // });
     }
   };
 }]);
@@ -46,7 +53,6 @@ coreApp.directive('fileread', [() => {
             });
 
             $scope.opts.data = data;
-
             $elm.val(null);
           });
         };

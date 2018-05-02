@@ -4,16 +4,16 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
-const indexRouter = require('./lib/routes/index');
-const dataRouter = require('./lib/routes/data');
-const reportsRouter = require('./lib/routes/reports');
-
 const app = express();
 
 if (app.get('env') === 'development') {
   /* eslint-disable global-require */
   require('dotenv').config();
 }
+
+const indexRouter = require('./lib/routes/index');
+const dataRouter = require('./lib/routes/data');
+const reportsRouter = require('./lib/routes/reports');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
