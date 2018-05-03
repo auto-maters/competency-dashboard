@@ -5,17 +5,16 @@ coreApp.controller('uploadController', ['$scope', '$timeout', 'CompetencyData', 
     return angular.isUndefined(val) || val === null || val === '';
   };
 
-  $scope.showLoader = false;
+  // $scope.showLoader = false;
 
   $scope.uploadCompetencyData = function uploadCompetencyData() {
     if (!angular.isUndefinedOrNullOrEmpty($scope.result.data)) {
-      $scope.showLoader = true;
+      // $scope.showLoader = true;
       CompetencyData.uploadCompData({}).then((responseCode) => {
-        $scope.showLoader = false;
-        $timeout(() => {
-          $scope.showLoader = false;
-        }, 4000);
         console.log(responseCode);
+        if (responseCode === 200) {
+          Materialize.toast('File uploaded successfully', 4000, 'rounded');
+        }
       });
     }
   };

@@ -1,4 +1,4 @@
-/* global angular */
+/* global angular jQuery*/
 const coreApp = angular.module('angularApp', ['ngRoute']);
 
 coreApp.config(($routeProvider, $locationProvider) => {
@@ -15,3 +15,22 @@ coreApp.config(($routeProvider, $locationProvider) => {
     requireBase: false,
   });
 });
+
+coreApp.directive('loading', ['$http', ($http) => {
+  return {
+    restrict: 'A',
+    link: ($scope) => {
+      $scope.isLoading = () => {
+        return $http.pendingRequests.length > 0;
+      };
+
+      $scope.$watch($scope.isLoading, (v) => {
+        if (v) {
+          $scope.showLoader = true;
+        } else {
+          $scope.showLoader = false;
+        }
+      });
+    },
+  };
+}]);

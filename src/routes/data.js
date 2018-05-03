@@ -10,8 +10,11 @@ const router = express.Router();
 
 /* Upload file route*/
 
-router.get('/upload', (req, res) => {
-  res.send('respond with a resource');
+router.put('/upload', (req, res) => {
+  // console.log(req.header);
+  setTimeout(() => {
+    res.send('respond with a resource');
+  }, 3000);
 });
 
 module.exports = router;
