@@ -5,16 +5,41 @@ coreApp.controller('uploadController', ['$scope', '$timeout', 'CompetencyData', 
     return angular.isUndefined(val) || val === null || val === '';
   };
 
-  // $scope.showLoader = false;
+  function dataToArray(fileData) {
+    return new Promise((resolve) => {
+      const finalArray = [];
+      let i;
+
+      for (i = 0; i < fileData.length; i++) {
+        for (const key in fileData[i]) { // eslint-disable-line
+          const obj = {};
+          if (Object.prototype.hasOwnProperty.call(fileData[i], key)) {
+            if (fileData[i][key] === 'E0' || fileData[i][key] === 'E1' || fileData[i][key] === 'E2' || fileData[i][key] === 'E3' || fileData[i][key] === 'E4') {
+              obj.empId = fileData[i]['Employee Number'];
+              obj.empName = fileData[i]['Employee Name'];
+              obj.compName = key;
+              obj.profLvl = fileData[i][key];
+              finalArray.push(obj);
+            }
+          }
+        }
+      }
+      resolve(finalArray);
+    });
+  }
 
   $scope.uploadCompetencyData = function uploadCompetencyData() {
     if (!angular.isUndefinedOrNullOrEmpty($scope.result.data)) {
-      // $scope.showLoader = true;
-      CompetencyData.uploadCompData({}).then((responseCode) => {
-        console.log(responseCode);
-        if (responseCode === 200) {
-          Materialize.toast('File uploaded successfully', 4000, 'rounded');
-        }
+      dataToArray($scope.result.data).then((arrData) => {
+        const arrDataToJson = {
+          data: arrData,
+        };
+        CompetencyData.uploadCompData((arrDataToJson)).then((responseCode) => {
+          console.log(responseCode);
+          if (responseCode === 200) {
+            Materialize.toast('File uploaded successfully', 4000, 'rounded');
+          }
+        });
       });
     }
   };

@@ -15,6 +15,12 @@ const indexRouter = require('./lib/routes/index');
 const dataRouter = require('./lib/routes/data');
 const reportsRouter = require('./lib/routes/reports');
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Methods', 'POST, GET, PUT');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  return next();
+});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');

@@ -4,9 +4,12 @@ coreApp.factory('CompetencyData', ['$http', ($http) => {
   return {
     uploadCompData: (empCompData) => {
       return $http({
-        method: 'PUT',
+        method: 'POST',
         url: '/data/upload',
         data: empCompData,
+        headers: {
+          'Content-Type': 'application/json',
+        },
       }).then((response) => {
         console.log('response: ', response.data);
         return response.status;
