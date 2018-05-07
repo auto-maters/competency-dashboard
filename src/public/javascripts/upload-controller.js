@@ -15,10 +15,11 @@ coreApp.controller('uploadController', ['$scope', '$timeout', 'CompetencyData', 
           const obj = {};
           if (Object.prototype.hasOwnProperty.call(fileData[i], key)) {
             if (fileData[i][key] === 'E0' || fileData[i][key] === 'E1' || fileData[i][key] === 'E2' || fileData[i][key] === 'E3' || fileData[i][key] === 'E4') {
-              obj.empId = fileData[i]['Employee Number'];
-              obj.empName = fileData[i]['Employee Name'];
-              obj.compName = key;
-              obj.profLvl = fileData[i][key];
+              obj.emp_id = fileData[i]['Employee Number'];
+              obj.emp_name = fileData[i]['Employee Name'];
+              obj.emp_comp_name = key;
+              obj.emp_comp_level = fileData[i][key];
+              obj.created_by = 'Admin';
               finalArray.push(obj);
             }
           }
@@ -31,15 +32,25 @@ coreApp.controller('uploadController', ['$scope', '$timeout', 'CompetencyData', 
   $scope.uploadCompetencyData = function uploadCompetencyData() {
     if (!angular.isUndefinedOrNullOrEmpty($scope.result.data)) {
       dataToArray($scope.result.data).then((arrData) => {
-        const arrDataToJson = {
-          data: arrData,
-        };
-        CompetencyData.uploadCompData((arrDataToJson)).then((responseCode) => {
-          console.log(responseCode);
-          if (responseCode === 200) {
-            Materialize.toast('File uploaded successfully', 4000, 'rounded');
-          }
-        });
+        if (jQuery.isEmptyObject(arrData) || angular.isUndefinedOrNullOrEmpty(arrData)) {
+          Materialize.toast('File upload failed. Please re-check the file format', 4000, 'rounded');
+          console.log('Error in formatting data');
+        } else {
+          const arrDataToJson = {
+            data: arrData,
+          };
+          CompetencyData.uploadCompData((arrDataToJson)).then((responseCode) => {
+            console.log(responseCode);
+            if (responseCode === 200) {
+              Materialize.toast('File uploaded successfully', 4000, 'rounded');
+            } else {
+              Materialize.toast('File upload failed', 4000, 'rounded');
+            }
+          }).catch((ex) => {
+            Materialize.toast('File upload failed', 4000, 'rounded');
+            console.log(ex.message);
+          });
+        }
       });
     }
   };

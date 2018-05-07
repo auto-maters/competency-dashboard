@@ -15,7 +15,7 @@ coreApp.factory('CompetencyData', ['$http', ($http) => {
         return response.status;
       }).catch((error) => {
         console.log('error:', error.data);
-        return 500;
+        return error.status;
       });
     },
   };
