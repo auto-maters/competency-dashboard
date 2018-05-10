@@ -18,5 +18,18 @@ coreApp.factory('CompetencyData', ['$http', ($http) => {
         return error.status;
       });
     },
+
+    getCompetencyList: () => {
+      return $http({
+        method: 'GET',
+        url: '/reports/getCompetency',
+      }).then((response) => {
+        console.log('response: ', response.data);
+        return response;
+      }).catch((error) => {
+        console.log('error:', error.data);
+        return error.status;
+      });
+    },
   };
 }]);

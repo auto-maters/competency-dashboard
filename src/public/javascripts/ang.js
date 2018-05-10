@@ -2,6 +2,10 @@
 const coreApp = angular.module('angularApp', ['ngRoute']);
 
 coreApp.config(($routeProvider, $locationProvider) => {
+  $routeProvider.when('/reports', {
+    controller: 'reportsController',
+    templateUrl: '/templates/reports.tpl.html',
+  });
   $routeProvider.when('/upload', {
     controller: 'uploadController',
     templateUrl: '/templates/upload.tpl.html',
