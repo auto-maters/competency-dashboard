@@ -1,13 +1,21 @@
-// const search = require('../server-controllers/search');
+const dashboard = require('../server-controllers/dashboard');
 
 const express = require('express');
 
 const router = express.Router();
 
-/* GET home page. */
-
-router.get('/', (req, res) => {
-  res.sendFile('index.html', { root: 'views' });
+router.get('/getDashboardData', (req, res) => {
+  dashboard.getDashboard(req.body).then((result) => {
+    if (result.status === 'OK') {
+      res.status(200).json(result);
+    } else {
+      res.status(500).json(result);
+    }
+  }).catch((e) => {
+    res.status(500, {
+      error: e,
+    });
+  });
 });
 
 module.exports = router;

@@ -10,6 +10,10 @@ coreApp.config(($routeProvider, $locationProvider) => {
     controller: 'uploadController',
     templateUrl: '/templates/upload.tpl.html',
   });
+  $routeProvider.when('/', {
+    controller: 'dashboardController',
+    templateUrl: '/templates/dashboard.html',
+  });
   $routeProvider.otherwise({
     redirectTo: '/',
   });
