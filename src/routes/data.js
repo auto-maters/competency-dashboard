@@ -11,7 +11,7 @@ const router = express.Router();
 /* Upload file route*/
 
 router.post('/upload', (req, res) => {
-  upload.dumpDataIntoTable(req.body.data).then((result) => {
+  upload.dumpDataIntoTable(req.body).then((result) => {
     if (result.status === 'OK') {
       res.status(200).json(result);
     } else {
