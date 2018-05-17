@@ -8,77 +8,87 @@ coreApp.controller('dashboardController', ['$scope', '$q', '$timeout', 'Competen
   $scope.dashboardData = [];
 
   function fillDataToDashboard() {
-    $scope.nodeJS = [];
-    $scope.angularJS = [];
-    $scope.htmlCSS = [];
-    $scope.rubyOnRails = [];
-    $scope.cloudComputingGeneral = [];
-    $scope.internetOfThings = [];
-    $scope.bigDataHadoop = [];
-    $scope.mobileAndroid = [];
-    $scope.tableauBI = [];
-    $scope.wex = [];
+    $scope.nodeJS = { total: '0', details: [] };
+    $scope.angular1 = { total: '0', details: [] };
+    $scope.htmlCSS = { total: '0', details: [] };
+    $scope.rOR = { total: '0', details: [] };
+    $scope.clCmpGen = { total: '0', details: [] };
+    $scope.iOT = { total: '0', details: [] };
+    $scope.hadoop = { total: '0', details: [] };
+    $scope.android = { total: '0', details: [] };
+    $scope.tableau = { total: '0', details: [] };
+    $scope.wex = { total: '0', details: [] };
 
     $scope.dashboardData.data.records.forEach((comp) => {
       if (comp.emp_comp_name === 'Digital : Node.js') {
         const obj = {};
         obj.level = comp.emp_comp_level;
         obj.level_count = comp.comp_level_count;
-        $scope.nodeJS.push(obj);
+        $scope.nodeJS.details.push(obj);
+        $scope.nodeJS.total = parseInt($scope.nodeJS.total, 10) + parseInt(obj.level_count, 10);
       }
       if (comp.emp_comp_name === 'Digital : AngularJS') {
         const obj = {};
         obj.level = comp.emp_comp_level;
         obj.level_count = comp.comp_level_count;
-        $scope.angularJS.push(obj);
+        $scope.angular1.details.push(obj);
+        $scope.angular1.total = parseInt($scope.angular1.total, 10) + parseInt(obj.level_count, 10);
       }
       if (comp.emp_comp_name === 'Digital : HTML5-CSS3') {
         const obj = {};
         obj.level = comp.emp_comp_level;
         obj.level_count = comp.comp_level_count;
-        $scope.htmlCSS.push(obj);
+        $scope.htmlCSS.details.push(obj);
+        $scope.htmlCSS.total = parseInt($scope.htmlCSS.total, 10) + parseInt(obj.level_count, 10);
       }
       if (comp.emp_comp_name === 'Digital : Ruby on Rails') {
         const obj = {};
         obj.level = comp.emp_comp_level;
         obj.level_count = comp.comp_level_count;
-        $scope.rubyOnRails.push(obj);
+        $scope.rOR.details.push(obj);
+        $scope.rOR.total = parseInt($scope.rOR.total, 10) + parseInt(obj.level_count, 10);
       }
       if (comp.emp_comp_name === 'Digital : Cloud Computing (General)') {
         const obj = {};
         obj.level = comp.emp_comp_level;
         obj.level_count = comp.comp_level_count;
-        $scope.cloudComputingGeneral.push(obj);
+        $scope.clCmpGen.details.push(obj);
+        $scope.clCmpGen.total = parseInt($scope.clCmpGen.total, 10) + parseInt(obj.level_count, 10);
       }
       if (comp.emp_comp_name === 'Digital : Internet of Things') {
         const obj = {};
         obj.level = comp.emp_comp_level;
         obj.level_count = comp.comp_level_count;
-        $scope.internetOfThings.push(obj);
+        $scope.iOT.details.push(obj);
+        $scope.iOT.total = parseInt($scope.iOT.total, 10) + parseInt(obj.level_count, 10);
       }
       if (comp.emp_comp_name === 'Digital : BigData and Hadoop Ecosystems') {
         const obj = {};
         obj.level = comp.emp_comp_level;
         obj.level_count = comp.comp_level_count;
-        $scope.bigDataHadoop.push(obj);
+        $scope.hadoop.details.push(obj);
+        $scope.hadoop.total = parseInt($scope.hadoop.total, 10) + parseInt(obj.level_count, 10);
       }
       if (comp.emp_comp_name === 'Digital : Mobile Computing - Android') {
         const obj = {};
         obj.level = comp.emp_comp_level;
         obj.level_count = comp.comp_level_count;
-        $scope.mobileAndroid.push(obj);
+        $scope.android.details.push(obj);
+        $scope.android.total = parseInt($scope.android.total, 10) + parseInt(obj.level_count, 10);
       }
       if (comp.emp_comp_name === 'Digital : BI Data Visualization - Tableau') {
         const obj = {};
         obj.level = comp.emp_comp_level;
         obj.level_count = comp.comp_level_count;
-        $scope.tableauBI.push(obj);
+        $scope.tableau.details.push(obj);
+        $scope.tableau.total = parseInt($scope.tableau.total, 10) + parseInt(obj.level_count, 10);
       }
       if (comp.emp_comp_name === 'Digital : IBM Watson Explorer') {
         const obj = {};
         obj.level = comp.emp_comp_level;
         obj.level_count = comp.comp_level_count;
-        $scope.wex.push(obj);
+        $scope.wex.details.push(obj);
+        $scope.wex.total = parseInt($scope.wex.total, 10) + parseInt(obj.level_count, 10);
       }
     });
   }

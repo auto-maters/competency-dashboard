@@ -28,13 +28,11 @@
 								</span>
 							</div>
 							<span class="card-title">
-								<span class="AssociateCount">40+</span>
+								<span class="AssociateCount">{{nodeJS.total}} </span>
 								<span class="TrainingTitle">Associates Trained on Node JS</span>
 							</span>
-							<ul>
-								<li>E0</li>
-								<li>E1</li>
-								<li>E2</li>
+							<ul ng-repeat="comp in nodeJS.details track by $index">
+								<li><a href="/">{{comp.level}}</a> - {{comp.level_count}}</li>
 							</ul>
 						</div>
 					</div>
@@ -48,13 +46,12 @@
 								</span>
 							</div>
 							<span class="card-title">
-								<span class="AssociateCount">40+</span>
-								<span class="TrainingTitle">Associates Trained on Node JS</span>
+							</ul>
+								<span class="AssociateCount">{{angular1.total}} </span>
+								<span class="TrainingTitle">Associates Trained on AngularJS</span>
 							</span>
-							<ul class="TrainingTitle">
-								<li>E0</li>
-								<li>E1</li>
-								<li>E2</li>
+							<ul ng-repeat="comp in angular1.details track by $index">
+								<li><a href="/">{{comp.level}}</a> - {{comp.level_count}}</li>
 							</ul>
 						</div>
 					</div>

@@ -21,7 +21,13 @@ coreApp.controller('uploadController', ['$scope', '$timeout', 'CompetencyData', 
     } else {
       $scope.typeOfFile = 'Training';
     }
-    // $scope.$apply();
+    $timeout(() => {
+      if (!angular.isUndefinedOrNullOrEmpty($scope.result)) {
+        $("form :input[id='fileInput']").val('');
+        $("form :input[id='fileInputText']").val('');
+        $scope.result = {};
+      }
+    }, 100);
   });
 
   function dataToArray(fileData) {
@@ -64,6 +70,9 @@ coreApp.controller('uploadController', ['$scope', '$timeout', 'CompetencyData', 
       dataToArray($scope.result.data).then((arrData) => {
         if (jQuery.isEmptyObject(arrData) || angular.isUndefinedOrNullOrEmpty(arrData)) {
           Materialize.toast('File upload failed. Please re-check the file format', 4000, 'rounded');
+          $("form :input[id='fileInput']").val('');
+          $("form :input[id='fileInputText']").val('');
+          $scope.result.data = [];
           console.log('Error in formatting data');
         } else {
           const arrDataToJson = {
@@ -74,12 +83,20 @@ coreApp.controller('uploadController', ['$scope', '$timeout', 'CompetencyData', 
             console.log(responseCode);
             if (responseCode === 200) {
               Materialize.toast('File uploaded successfully', 4000, 'rounded');
-              // $('input[id=fileInput]').val('');
+              $("form :input[id='fileInput']").val('');
+              $("form :input[id='fileInputText']").val('');
+              $scope.result = {};
             } else {
-              Materialize.toast('File upload failed', 4000, 'rounded');
+              Materialize.toast('File upload failed due to some error', 4000, 'rounded');
+              $("form :input[id='fileInput']").val('');
+              $("form :input[id='fileInputText']").val('');
+              $scope.result = {};
             }
           }).catch((ex) => {
-            Materialize.toast('File upload failed', 4000, 'rounded');
+            Materialize.toast('File upload failed due to some error', 4000, 'rounded');
+            $("form :input[id='fileInput']").val('');
+            $("form :input[id='fileInputText']").val('');
+            $scope.result = {};
             console.log(ex.message);
           });
         }
