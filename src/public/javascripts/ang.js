@@ -12,7 +12,7 @@ coreApp.config(($routeProvider, $locationProvider) => {
   });
   $routeProvider.when('/', {
     controller: 'dashboardController',
-    templateUrl: '/templates/dashboard.html',
+    templateUrl: '/templates/dashboard.tpl.html',
   });
   $routeProvider.otherwise({
     redirectTo: '/',

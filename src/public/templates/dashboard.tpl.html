@@ -1,0 +1,145 @@
+<div>
+	<div loading ng-show="showLoader">
+		<div class="spinner-layer spinner-green">
+			<div class="circle-clipper left">
+				<div class="circle"></div>
+			</div>
+			<div class="gap-patch">
+				<div class="circle"></div>
+			</div>
+			<div class="circle-clipper right">
+				<div class="circle"></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div ng-show="!showLoader">
+	<!--main content-->
+	<div class="container">
+		<div class="section">
+			<div class="row">
+				<div class="col s12 m4">
+					<div class="card gridStyle">
+						<comp-details ng-if="nodeJS !== undefined" comp-info="nodeJS"></comp-details>
+					</div>
+				</div>
+				<div class="col s12 m4">
+					<div class="card gridStyle">
+						<comp-details ng-if="angular1 !== undefined" comp-info="angular1"></comp-details>
+					</div>
+				</div>
+				<div class="col s12 m4">
+					<div class="card gridStyle">
+						<comp-details ng-if="htmlCSS !== undefined" comp-info="htmlCSS"></comp-details>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col s12 m4">
+					<div class="card gridStyle">
+						<comp-details ng-if="rOR !== undefined" comp-info="rOR"></comp-details>
+					</div>
+				</div>
+				<div class="col s12 m4">
+					<div class="card gridStyle">
+						<comp-details ng-if="iOT !== undefined" comp-info="iOT"></comp-details>
+					</div>
+				</div>
+				<div class="col s12 m4">
+					<div class="card gridStyle">
+						<comp-details ng-if="hadoop !== undefined" comp-info="hadoop"></comp-details>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col s12 m4">
+					<div class="card gridStyle">
+						<comp-details ng-if="android !== undefined" comp-info="android"></comp-details>
+					</div>
+				</div>
+				<div class="col s12 m4">
+					<div class="card gridStyle">
+						<comp-details ng-if="tableau !== undefined" comp-info="tableau"></comp-details>
+					</div>
+				</div>
+				<div class="col s12 m4">
+					<div class="card gridStyle">
+						<comp-details ng-if="wex !== undefined" comp-info="wex"></comp-details>
+					</div>
+				</div>
+			</div>
+			<div class="row">				
+				<div class="col s12 m4">
+					<div class="card gridStyle">
+						<div class="card-content">
+							<div class="center light-blue-text">
+								<span>
+									<img src="./images/nodejs-logo-FBE122E377-seeklogo.com.png" style="height:60px;">
+								</span>
+							</div>
+							<span class="card-title">
+								<span class="AssociateCount">40+</span>
+								<span class="TrainingTitle">Associates Trained on Node JS</span>
+							</span>
+							<ul>
+								<li>E0</li>
+								<li>E1</li>
+								<li>E2</li>
+							</ul>
+						</div>
+						<a class="btn-floating halfway-fab waves-effect waves-light red">
+							<i class="material-icons">add</i>
+						</a>
+					</div>
+				</div>
+				<div class="col s12 m4">
+					<div class="card gridStyle">
+						<div class="card-content">
+							<div class="center light-blue-text">
+								<span>
+									<img src="./images/nodejs-logo-FBE122E377-seeklogo.com.png" style="height:60px;">
+								</span>
+							</div>
+							<span class="card-title">
+								<span class="AssociateCount">40+</span>
+								<span class="TrainingTitle">Associates Trained on Node JS</span>
+							</span>
+							<ul>
+								<li>E0</li>
+								<li>E1</li>
+								<li>E2</li>
+							</ul>
+						</div>
+						<a class="btn-floating halfway-fab waves-effect waves-light red">
+							<i class="material-icons">add</i>
+						</a>
+					</div>
+				</div>
+				<div class="col s12 m4">
+					<div class="card gridStyle">
+						<div class="card-content">
+							<div class="center light-blue-text">
+								<span>
+									<img src="./images/nodejs-logo-vector-png-kirkstrobeck-commented-on-oct-20-2015-1085.png" style="height:60px;">
+								</span>
+							</div>
+							<span class="card-title">
+								<span class="AssociateCount">40+</span>
+								<span class="TrainingTitle">Associates Trained on Node JS</span>
+							</span>
+							<ul class="TrainingTitle">
+								<li>E0</li>
+								<li>E1</li>
+								<li>E2</li>
+							</ul>
+							<a class="btn-floating halfway-fab waves-effect waves-light red">
+								<i class="material-icons">add</i>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
