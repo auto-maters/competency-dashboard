@@ -19,7 +19,51 @@ coreApp.controller('dashboardController', ['$scope', '$q', '$timeout', 'Competen
     $scope.tableau = { comp: 'Tableau', total: '0', details: [] };
     $scope.wex = { comp: 'IBM Watson Explorer', total: '0', details: [] };
 
-    $scope.dashboardData.data.records.forEach((comp) => {
+    $scope.pharmaMandatory = { type: 'training', comp: 'Pharma Mandatory' };
+    $scope.agileE0E1 = { type: 'training', comp: 'Agile' };
+    $scope.itilE0 = { type: 'training', comp: 'ITIL E0' };
+    $scope.agileCertifications = { type: 'training', comp: 'Agile Certifications' };
+    $scope.itilCertifications = { type: 'training', comp: 'ITIL Certifications' };
+    $scope.ascentCertifications = { type: 'training', comp: 'Ascent Certifications' };
+    $scope.estimationE0 = { type: 'training', comp: 'Estimation E0' };
+    $scope.gdpr = { type: 'training', comp: 'GDPR' };
+
+    $scope.dashboardData.data.records[1].forEach((train) => {
+      if (train.emp_comp_name === 'Pharma Mandatory') {
+        $scope.pharmaMandatory.train = 'Pharma Mandatory';
+        $scope.pharmaMandatory.total = train.emp_count;
+      }
+      if (train.emp_comp_name === 'Agile E0 and E1') {
+        $scope.agileE0E1.train = 'Agile';
+        $scope.agileE0E1.total = train.emp_count;
+      }
+      if (train.emp_comp_name === 'ITIL E0') {
+        $scope.itilE0.train = 'ITIL E0';
+        $scope.itilE0.total = train.emp_count;
+      }
+      if (train.emp_comp_name === 'Agile Certifications') {
+        $scope.agileCertifications.train = 'Agile Certifications';
+        $scope.agileCertifications.total = train.emp_count;
+      }
+      if (train.emp_comp_name === 'ITIL Certifications') {
+        $scope.itilCertifications.train = 'ITIL Certifications';
+        $scope.itilCertifications.total = train.emp_count;
+      }
+      if (train.emp_comp_name === 'Ascent Certifications') {
+        $scope.ascentCertifications.train = 'Ascent Certifications';
+        $scope.ascentCertifications.total = train.emp_count;
+      }
+      if (train.emp_comp_name === 'Estimation E0') {
+        $scope.estimationE0.train = 'Estimation E0';
+        $scope.estimationE0.total = train.emp_count;
+      }
+      if (train.emp_comp_name === 'GDPR') {
+        $scope.gdpr.train = 'GDPR';
+        $scope.gdpr.total = train.emp_count;
+      }
+    });
+
+    $scope.dashboardData.data.records[0].forEach((comp) => {
       if (comp.emp_comp_name === 'Digital : Node.js') {
         const obj = {};
         obj.level = comp.emp_comp_level;
