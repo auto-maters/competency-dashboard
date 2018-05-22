@@ -6,6 +6,28 @@ coreApp.controller('dashboardController', ['$scope', '$q', '$timeout', 'Competen
   };
 
   $scope.dashboardData = [];
+  $scope.isDashComp = true;
+  $scope.dashboardType = 'Competency';
+
+  if ($scope.isDashComp) {
+    $scope.dashboardType = 'Competency';
+  } else {
+    $timeout(() => {
+      $scope.dashboardType = 'Training';
+    }, 500);
+  }
+
+  $("input[type='checkbox']").on('change', () => {
+    if ($scope.isDashComp) {
+      $timeout(() => {
+        $scope.dashboardType = 'Competency';
+      }, 800);
+    } else {
+      $timeout(() => {
+        $scope.dashboardType = 'Training';
+      }, 800  );
+    }
+  });
 
   function fillDataToDashboard() {
     $scope.nodeJS = { comp: 'NodeJS', total: '0', details: [] };
