@@ -14,7 +14,7 @@ const dumpDataIntoTable = function dumpDataIntoTable(data) {
       } else if (data.typeFile === 'Training') {
         finalQuery = pgp.helpers.insert(data.fileData, cs, 'emp_comp_training') +
                 ' ON CONFLICT ON CONSTRAINT emp_comp_training_pkey DO UPDATE SET ' +
-                cs.assignColumns({from: 'EXCLUDED');
+                cs.assignColumns({from: 'EXCLUDED'});
       }
       db.none(finalQuery)
       .then(() => {
