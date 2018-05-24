@@ -19,7 +19,7 @@
 	<div class="container">
 		<div class="section">
 			<div class="row">
-				<div class="col s12 center">
+				<div class="col s12 m6 l6">
 					<div class="switch">
 						<label class="flow-text">
 							Training
@@ -28,6 +28,20 @@
 							Competency
 						</label>
 					</div>
+				</div>
+				<div class="input-field col s12 m6 l6">					
+					<select multiple>
+						<optgroup label="Competency">
+							<option value="1">Option 1</option>
+							<option value="2">Option 2</option>
+						</optgroup>
+						<optgroup label="Training">
+							<option value="3">Option 1</option>
+							<option value="4">Option 2</option>
+							<option value="5">Option 3</option>
+						</optgroup>						
+					  </select>	
+					  <label class="flow-text">Competencies/Trainings</label>				  
 				</div>
 			</div>
 			<div ng-if="dashboardType === 'Competency'">

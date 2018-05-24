@@ -1,4 +1,4 @@
-/* global angular coreApp XLSX Materialize */
+/* global angular coreApp XLSX M */
 
 coreApp.controller('uploadController', ['$scope', '$timeout', 'CompetencyData', ($scope, $timeout, CompetencyData) => {
   angular.isUndefinedOrNullOrEmpty = function isUndefinedOrNullOrEmpty(val) {
@@ -69,7 +69,7 @@ coreApp.controller('uploadController', ['$scope', '$timeout', 'CompetencyData', 
     if (!angular.isUndefinedOrNullOrEmpty($scope.result.data)) {
       dataToArray($scope.result.data).then((arrData) => {
         if (jQuery.isEmptyObject(arrData) || angular.isUndefinedOrNullOrEmpty(arrData)) {
-          Materialize.toast('File upload failed. Please re-check the file format', 4000, 'rounded');
+          M.toast({ html: 'File upload failed. Please re-check the file format', classes: 'rounded' });
           $("form :input[id='fileInput']").val('');
           $("form :input[id='fileInputText']").val('');
           $scope.result.data = [];
@@ -82,18 +82,18 @@ coreApp.controller('uploadController', ['$scope', '$timeout', 'CompetencyData', 
           CompetencyData.uploadCompData((arrDataToJson)).then((responseCode) => {
             console.log(responseCode);
             if (responseCode === 200) {
-              Materialize.toast('File uploaded successfully', 4000, 'rounded');
+              M.toast({ html: 'File uploaded successfully', classes: 'rounded' });
               $("form :input[id='fileInput']").val('');
               $("form :input[id='fileInputText']").val('');
               $scope.result = {};
             } else {
-              Materialize.toast('File upload failed due to some error', 4000, 'rounded');
+              M.toast({ html: 'File upload failed due to some error', classes: 'rounded' });
               $("form :input[id='fileInput']").val('');
               $("form :input[id='fileInputText']").val('');
               $scope.result = {};
             }
           }).catch((ex) => {
-            Materialize.toast('File upload failed due to some error', 4000, 'rounded');
+            M.toast({ html: 'File upload failed due to some error', classes: 'rounded' });
             $("form :input[id='fileInput']").val('');
             $("form :input[id='fileInputText']").val('');
             $scope.result = {};

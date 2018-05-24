@@ -1,9 +1,13 @@
-/* global angular coreApp XLSX Materialize */
+/* global angular coreApp XLSX M */
 
 coreApp.controller('dashboardController', ['$scope', '$q', '$timeout', 'CompetencyData', ($scope, $q, $timeout, CompetencyData) => {
   angular.isUndefinedOrNullOrEmpty = function isUndefinedOrNullOrEmpty(val) {
     return angular.isUndefined(val) || val === null || val === '';
   };
+
+  $(document).ready(() => {
+    $('select').formSelect();
+  });
 
   $scope.dashboardData = [];
   $scope.isDashComp = true;
@@ -25,7 +29,7 @@ coreApp.controller('dashboardController', ['$scope', '$q', '$timeout', 'Competen
     } else {
       $timeout(() => {
         $scope.dashboardType = 'Training';
-      }, 800  );
+      }, 800);
     }
   });
 
@@ -167,7 +171,7 @@ coreApp.controller('dashboardController', ['$scope', '$q', '$timeout', 'Competen
       fillDataToDashboard();
     }).catch((error) => {
       console.log('Error in initializing method', error.message);
-      Materialize.toast('Some error occurred, please refresh the page', 4000);
+      M.toast('Some error occurred, please refresh the page', 4000);
     });
   }
 

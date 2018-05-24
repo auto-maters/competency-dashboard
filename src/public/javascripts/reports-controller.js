@@ -1,24 +1,21 @@
-/* global angular coreApp XLSX Materialize */
+/* global angular coreApp XLSX M */
 
 coreApp.controller('reportsController', ['$scope', '$q', '$timeout', 'CompetencyData', ($scope, $q, $timeout, CompetencyData) => {
   angular.isUndefinedOrNullOrEmpty = function isUndefinedOrNullOrEmpty(val) {
     return angular.isUndefined(val) || val === null || val === '';
   };
 
-  $scope.$on('$viewContentLoaded', () => {
-    // call it here
-    $scope.reRender();
-  });
-
   $scope.reRender = function reRender() {
-    $('select').material_select();
+    $('select').formSelect();
   };
 
   $scope.updateTextFields = function updateTextFields() {
-    Materialize.updateTextFields();
+    M.updateTextFields();
   };
 
   $scope.competencyList = [];
+  $scope.selectedComp = null;
+  $scope.selectedCompLevel = null;
 
   function initializeData() {
     const requests = [CompetencyData.getCompetencyList()];
@@ -30,7 +27,7 @@ coreApp.controller('reportsController', ['$scope', '$q', '$timeout', 'Competency
       }, 300);
     }).catch((error) => {
       console.log('Error in initializing method', error.message);
-      Materialize.toast('Some error occurred, please refresh the page', 4000);
+      M.toast({ html: 'Some error occurred, please refresh the page', classes: 'rounded' });
     });
   }
 
