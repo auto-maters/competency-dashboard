@@ -30,69 +30,21 @@
 					</div>
 				</div>
 				<div class="input-field col s12 m6 l6">					
-					<select multiple>
-						<optgroup label="Competency">
-							<option value="1">Option 1</option>
-							<option value="2">Option 2</option>
-						</optgroup>
-						<optgroup label="Training">
-							<option value="3">Option 1</option>
-							<option value="4">Option 2</option>
-							<option value="5">Option 3</option>
-						</optgroup>						
+					<select multiple id="ddlOptions" ng-model="selectedList" ng-options="c.comp_name group by c.comp_group for c in competencyList.data.records track by c.comp_name" >
+					<option value="" disabled>-- Select List--</option>		
 					  </select>	
-					  <label class="flow-text">Competencies/Trainings</label>				  
+					<label class="flow-text">{{dashboardType}}</label>				  
 				</div>
+				<!-- <div class="input-field col s12 m4 l4">					
+					<input id="btnApplyfilter" class="waves-effect waves-light btn" type="button" value="Apply" ng-click="handleSelection()" />			  
+				</div> -->
 			</div>
 			<div ng-if="dashboardType === 'Competency'">
 				<div class="row">
-					<div class="col s12 m4">
-						<div class="card gridStyle">
-							<comp-details ng-if="nodeJS !== undefined" comp-info="nodeJS"></comp-details>
-						</div>
-					</div>
-					<div class="col s12 m4">
-						<div class="card gridStyle">
-							<comp-details ng-if="angular1 !== undefined" comp-info="angular1"></comp-details>
-						</div>
-					</div>
-					<div class="col s12 m4">
-						<div class="card gridStyle">
-							<comp-details ng-if="htmlCSS !== undefined" comp-info="htmlCSS"></comp-details>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col s12 m4">
-						<div class="card gridStyle">
-							<comp-details ng-if="rOR !== undefined" comp-info="rOR"></comp-details>
-						</div>
-					</div>
-					<div class="col s12 m4">
-						<div class="card gridStyle">
-							<comp-details ng-if="iOT !== undefined" comp-info="iOT"></comp-details>
-						</div>
-					</div>
-					<div class="col s12 m4">
-						<div class="card gridStyle">
-							<comp-details ng-if="hadoop !== undefined" comp-info="hadoop"></comp-details>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col s12 m4">
-						<div class="card gridStyle">
-							<comp-details ng-if="android !== undefined" comp-info="android"></comp-details>
-						</div>
-					</div>
-					<div class="col s12 m4">
-						<div class="card gridStyle">
-							<comp-details ng-if="tableau !== undefined" comp-info="tableau"></comp-details>
-						</div>
-					</div>
-					<div class="col s12 m4">
-						<div class="card gridStyle">
-							<comp-details ng-if="wex !== undefined" comp-info="wex"></comp-details>
+					<div class="col s12 m4" ng-repeat="item in selectedList track by $index">
+						<div class="card gridStyle minHeight">
+							<comp-details comp-info="competencyDetail[item.comp_name]" ng-if="competencyDetail[item.comp_name] !== undefined"></comp-details>
+							<comp-details comp-info="{ comp: item.comp_name, total: 0 }" ng-if="competencyDetail[item.comp_name] === undefined"></comp-details>
 						</div>
 					</div>
 				</div>

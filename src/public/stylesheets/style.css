@@ -1,3 +1,23 @@
 .nav-bkgclr {
     background-color: #357e73 !important;
 }
+
+.minHeight {
+    min-height: 277.84px;
+}
+
+/* Iphone media query */
+
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (orientation: landscape) {
+    .minHeight {
+        min-height: 366.58px;
+    }
+}
+
+/*ipad media Queries*/
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+    .minHeight {
+        min-height: 304.58px;
+    }
+}

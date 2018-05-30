@@ -6,7 +6,7 @@ module.exports = {
   getCompetencyList: () => {
     return new Promise((resolve) => {
       try {
-        db.any('SELECT DISTINCT(comp_name) FROM competency;')
+        db.any('SELECT DISTINCT(comp_name), comp_group FROM competency;')
         .then((data) => {
           // success
           console.log('Competency list recieved');

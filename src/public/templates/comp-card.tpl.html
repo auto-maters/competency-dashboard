@@ -1,14 +1,14 @@
 <div class="card-content">
     <div class="center light-blue-text">
         <span>
-            <img ng-src="./images/{{compInfo.comp}}.png" style="height:60px;">
+            <img ng-src="./images/{{compInfo.comp.split(': ')[1]}}.png" style="height:60px;">
         </span>
     </div>
     <span class="card-title">
         <span class="AssociateCount">{{compInfo.total}} </span>
-        <span class="TrainingTitle">Associates Trained on {{compInfo.comp}}</span>
+        <span class="TrainingTitle">Associates Trained on {{compInfo.comp.split(': ')[1]}}</span>
     </span>
-    <ul ng-repeat="comp in compInfo.details track by $index" ng-if="compInfo.type === undefined && compInfo.type !== 'training'">
+    <ul ng-repeat="comp in compInfo.details track by $index">
         <li><a href="/">{{comp.level}}</a> - {{comp.level_count}}</li>
     </ul>
     <a  ng-if="compInfo.type !== undefined && compInfo.type === 'training'" class="btn-floating halfway-fab waves-effect waves-light red">
