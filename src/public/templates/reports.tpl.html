@@ -6,9 +6,9 @@
           <label for="txtEmpId">  Employee Id </label>
         </div>
         <div class="input-field col s12 m6 l6">            
-            <select name="selectCompName" id="ddlCompName" ng-model="selectedComp" ng-options="c.comp_name for c in competencyList.data.records"
-                ng-change="">
-            <option value="" disabled selected>-- Select Competency --</option>
+            <select name="selectCompName" id="ddlCompName" ng-model="selectedComp" ng-options="c.comp_name for c in competencyList.data.records track by c.comp_name"
+                >
+            <option value="" disabled >-- Select Competency --</option>
             </select>
             <label for="selectCompName"> Competency </label>
         </div>

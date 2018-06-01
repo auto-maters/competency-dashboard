@@ -1,6 +1,6 @@
 /* global angular coreApp XLSX M */
 
-coreApp.controller('reportsController', ['$scope', '$q', '$timeout', 'CompetencyData', ($scope, $q, $timeout, CompetencyData) => {
+coreApp.controller('reportsController', ['$scope', '$q', '$timeout', '$routeParams', 'CompetencyData', ($scope, $q, $timeout, $routeParams, CompetencyData) => {
   angular.isUndefinedOrNullOrEmpty = function isUndefinedOrNullOrEmpty(val) {
     return angular.isUndefined(val) || val === null || val === '';
   };
@@ -25,6 +25,15 @@ coreApp.controller('reportsController', ['$scope', '$q', '$timeout', 'Competency
       $timeout(() => {
         $scope.reRender();
       }, 300);
+
+      if (Object.keys($routeParams).length !== 0) {
+        $scope.selectedComp = $routeParams.compName || null;
+        $scope.selectedCompLevel = $routeParams.compLevel || null;
+        $scope.selectedTraining = $routeParams.trainName || null;
+        $timeout(() => {
+          $scope.reRender();
+        }, 1000);
+      }
     }).catch((error) => {
       console.log('Error in initializing method', error.message);
       M.toast({ html: 'Some error occurred, please refresh the page', classes: 'rounded' });
