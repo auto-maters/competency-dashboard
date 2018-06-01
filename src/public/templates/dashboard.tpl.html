@@ -14,7 +14,7 @@
 	</div>
 </div>
 
-<div ng-show="!showLoader">
+<div ng-show="!showLoader" ng-cloak>
 	<!--main content-->
 	<div class="container">
 		<div class="section">
@@ -29,19 +29,22 @@
 						</label>
 					</div>
 				</div>
-				<div class="input-field col s12 m6 l6">					
-					<select multiple id="ddlOptions" ng-model="selectedList" ng-options="c.comp_name group by c.comp_group for c in competencyList.data.records track by c.comp_name" >
-					<option value="" disabled>-- Select List--</option>		
-					  </select>	
+				<div class="input-field col s12 m6 l6" ng-show="dashboardType === 'Competency'">	
+					<select multiple id="ddlCompOptions" ng-model="selectedList" ng-options="c.comp_name group by c.comp_group for c in competencyList.data.records track by c.comp_name" >
+						<option value="" disabled>-- Select List--</option>		
+					</select>
 					<label class="flow-text">{{dashboardType}}</label>				  
 				</div>
-				<!-- <div class="input-field col s12 m4 l4">					
-					<input id="btnApplyfilter" class="waves-effect waves-light btn" type="button" value="Apply" ng-click="handleSelection()" />			  
-				</div> -->
+				<div class="input-field col s12 m6 l6" ng-show="dashboardType !== 'Competency'">
+					<select multiple id="ddlTrainOptions" ng-model="selectedListTraining" ng-options="c.training_name for c in trainingList.data.records track by c.training_name" >
+						<option value="" disabled>-- Select List--</option>		
+					</select>
+					<label class="flow-text">{{dashboardType}}</label>
+				</div>
 			</div>
 			<div ng-if="dashboardType === 'Competency'">
 				<div class="row">
-					<div class="col s12 m4" ng-repeat="item in selectedList track by $index">
+					<div class="col s12 m4" id="competencyGrids" ng-repeat="item in selectedList track by $index">
 						<div class="card gridStyle minHeight">
 							<comp-details comp-info="competencyDetail[item.comp_name]" ng-if="competencyDetail[item.comp_name] !== undefined"></comp-details>
 							<comp-details comp-info="{ comp: item.comp_name, total: 0 }" ng-if="competencyDetail[item.comp_name] === undefined"></comp-details>
@@ -51,67 +54,15 @@
 			</div>
 			<div ng-if="dashboardType === 'Training'">
 				<div class="row">				
-					<div class="col s12 m4">
-						<div class="card gridStyle">
+					<div class="col s12 m4" ng-repeat="item in selectedListTraining track by $index">
+						<div class="card gridStyle minHeight">
 							<div class="card-content">
-								<comp-details ng-if="pharmaMandatory !== undefined" comp-info="pharmaMandatory"></comp-details>
+									<comp-details comp-info="trainingDetail[item.training_name]" ng-if="trainingDetail[item.training_name] !== undefined"></comp-details>
+									<comp-details comp-info="{ comp: item.training_name, total: 0 }" ng-if="trainingDetail[item.training_name] === undefined"></comp-details>
 							</div>
 						</div>
-					</div>
-					<div class="col s12 m4">
-						<div class="card gridStyle">
-							<div class="card-content">
-								<comp-details ng-if="agileE0E1 !== undefined" comp-info="agileE0E1"></comp-details>
-							</div>
-						</div>
-					</div>
-					<div class="col s12 m4">
-						<div class="card gridStyle">
-							<div class="card-content">
-								<comp-details ng-if="itilE0 !== undefined" comp-info="itilE0"></comp-details>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">				
-					<div class="col s12 m4">
-						<div class="card gridStyle">
-							<div class="card-content">
-								<comp-details ng-if="agileCertifications !== undefined" comp-info="agileCertifications"></comp-details>
-							</div>
-						</div>
-					</div>
-					<div class="col s12 m4">
-						<div class="card gridStyle">
-							<div class="card-content">
-								<comp-details ng-if="itilCertifications !== undefined" comp-info="itilCertifications"></comp-details>
-							</div>
-						</div>
-					</div>
-					<div class="col s12 m4">
-						<div class="card gridStyle">
-							<div class="card-content">
-								<comp-details ng-if="ascentCertifications !== undefined" comp-info="ascentCertifications"></comp-details>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="row">				
-					<div class="col s12 m4">
-						<div class="card gridStyle">
-							<div class="card-content">
-								<comp-details ng-if="estimationE0 !== undefined" comp-info="estimationE0"></comp-details>
-							</div>
-						</div>
-					</div>
-					<div class="col s12 m4">
-						<div class="card gridStyle">
-							<div class="card-content">
-								<comp-details ng-if="gdpr !== undefined" comp-info="gdpr"></comp-details>
-							</div>
-						</div>
-					</div>
-				</div>
+					</div>				
+				</div>				
 			</div>
 		</div>
 	</div>

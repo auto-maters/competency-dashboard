@@ -32,6 +32,19 @@ coreApp.factory('CompetencyData', ['$http', ($http) => {
       });
     },
 
+    getTrainingList: () => {
+      return $http({
+        method: 'GET',
+        url: '/reports/getTraining',
+      }).then((response) => {
+        console.log('response: ', response.data);
+        return response;
+      }).catch((error) => {
+        console.log('error:', error.data);
+        return error.status;
+      });
+    },
+
     getDashboardData: () => {
       return $http({
         method: 'GET',
