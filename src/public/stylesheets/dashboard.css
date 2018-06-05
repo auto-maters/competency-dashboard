@@ -4,18 +4,64 @@
   .icon-block .material-icons {
       font-size: inherit;
   }
-  .gridStyle{
+  .gridStyle {
       box-shadow: -6px 9px 13px 2px rgb(165,165,165);
       background-color: rgb(239,239,239);
       padding: 1%;
   }
-  .AssociateCount{
-       font-size:  40px;
+  .AssociateCount {
+      font-size:  40px;
       font-weight: bold;
       color: rgb(0,145,129);
   }
-  .TrainingTitle{
+
+  .TrainingTitle {
+      display: block;
+      font-size: 20px;
       font-weight: 400;
-      color: rgb(0,145,129);
-      
+      color: rgb(0,145,129);      
+  }
+
+  .TrainingTitle--Mid {    
+    font-size: 14px;    
+    white-space: nowrap;
+    font-weight: 400;
+    color: rgb(0,145,129);      
+  }
+
+  @media only screen and (max-width: 992px) {
+    .AssociateCount {
+        font-size: 30px;
+    }
+
+    .TrainingTitle {
+        display: block;
+        font-size: 16px;        
+    }    
+
+    .TrainingTitle--Mid {        
+        font-size: 12px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+  } 
+
+  @media only screen and (max-width: 600px) {
+    .AssociateCount {
+        font-size: 40px;
+    }
+
+    .TrainingTitle {
+        display: block;
+        font-size: 24px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .TrainingTitle--Mid {
+        display: block;
+        font-size: 17px;
+        font-weight: 400;
+        color: rgb(0,145,129);      
+    }
   }

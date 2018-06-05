@@ -34,15 +34,28 @@
 
     <body data-ng-app="angularApp">
         <nav class="nav-bkgclr">
-            <div class="nav-wrapper">
-                <a href="/" class="brand-logo">Competency Dashboard</a>
-                <ul class="right hide-on-med-and-down">
+                <a href="#" data-target="slide-out" class="sidenav-trigger hide-on-large-only"><i class="material-icons">menu</i></a> 
+            <div class="nav-wrapper">     
+                <a href="/" class="brand-logo nav-logo-style">Competency Dashboard</a>
+                <ul class="right hide-on-med-and-down nav-menu-style">
                     <li class="black-text text-lighten-3"><a href="/">Home</a></li>            
                     <li class="black-text text-lighten-3"><a href="/reports">Search Data</a></li>    
                     <li class="black-text text-lighten-3"><a href="/upload">Upload Data</a></li>
                 </ul>
             </div>
-        </nav>          
+          
+        
+        <ul id="slide-out" class="sidenav blue-grey lighten-5">
+            <li>                
+                <div>
+                    <a href="/" class="nav-mobile-style">Competency Dashboard</a>
+                </div>
+            </li>
+            <li class="black-text text-lighten-3"><a href="/">Home</a></li>            
+            <li class="black-text text-lighten-3"><a href="/reports">Search Data</a></li>    
+            <li class="black-text text-lighten-3"><a href="/upload">Upload Data</a></li>
+          </ul>
+        </nav>  
         <main>
             <div ng-view=""></div>
         </main>
@@ -51,6 +64,11 @@
         <script src="../javascripts/dashboard-controller.js"></script>
         <script src="../javascripts/dashboard-directives.js"></script>        
         <script src="../javascripts/angular-factories.js"></script>
-        <script src="../vendor/xlsx/xlsx.full.min.js"></script>        
+        <script src="../vendor/xlsx/xlsx.full.min.js"></script>     
+        <script>
+            $(document).ready(function(){
+                $('.sidenav').sidenav();
+              });
+        </script>   
     </body>
 </html>

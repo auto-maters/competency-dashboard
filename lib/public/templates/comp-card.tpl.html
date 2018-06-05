@@ -6,11 +6,9 @@
     </div>
     <span class="card-title">
         <span class="AssociateCount">{{compInfo.total}} </span>
-        <span class="TrainingTitle">Associates Trained on {{compInfo.comp.split(': ')[1] || compInfo.comp.split(': ')[0]}}</span>
+        <span class="TrainingTitle--Mid">Associates Trained on </span>
+        <span class="TrainingTitle">{{compInfo.comp.split(': ')[1] || compInfo.comp.split(': ')[0]}}</span>
     </span>
-    <!-- <ul ng-repeat="comp in compInfo.details track by $index">
-        <li><a href="/">{{comp.level}}</a> - {{comp.level_count}}</li>
-    </ul> -->
     <div class="row" ng-if="compInfo.type !== 'Training'">
         <div class="col s6 center">
             <ul>
