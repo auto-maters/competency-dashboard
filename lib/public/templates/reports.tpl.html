@@ -1,31 +1,50 @@
 <div class="container">
+  <br>
     <div id="tabsearch" class="col s12">
       <div class="row">
         <div class="input-field col s12 m6 l6">
           <input id="txtEmpId" ng-model="enteredEmpId" type="text" class="validate" />
           <label for="txtEmpId">  Employee Id </label>
         </div>
-        <div class="input-field col s12 m6 l6">            
-            <select name="selectCompName" id="ddlCompName" ng-model="selectedComp" ng-options="c.comp_name for c in competencyList.data.records track by c.comp_name"
-                >
-            <option value="" disabled >-- Select Competency --</option>
+        <div class="input-field col s12 m6 l6" ng-show="trainDisabled">	
+            <select multiple id="ddlCompOptions" ng-model="selectedListComp" ng-options="c.comp_name group by c.comp_group for c in competencyList.data.records track by c.comp_name">
+              <option value="" disabled>-- Select List--</option>		
             </select>
-            <label for="selectCompName"> Competency </label>
+            <label class="flow-text">Competency</label>				  
         </div>
+        <div class="input-field col s12 m6 l6" ng-show="compDisabled">
+            <select multiple id="ddlTrainOptions" ng-model="selectedListTraining" ng-options="c.training_name for c in trainingList.data.records track by c.training_name">
+              <option value="" disabled>-- Select List--</option>		
+            </select>
+            <label class="flow-text">Training</label>
+          </div>
       </div>
-      <div class="row">
-        <div class="input-field col s12 m6 l6">            
-            <select name="selectCompLevel" id="ddlAssetLocale" ng-model="selectedCompLevel"
-                ng-change="">
-            <option value="" disabled selected>-- Select Competency Level --</option>
-            <option value="E0" >E0</option>
-            <option value="E1" >E1</option>
-            <option value="E2" >E2</option>
-            <option value="E3" >E3</option>
-            <option value="E4" >E4</option>
-            </select>
-            <label for="selectCompLevel"> Competency Level </label>
-        </div>
+      <div class="row report-row-style">   
+          <div class="input-field col s12 m6 l6">
+              <span class="teal-text">Search Type</span>
+              <p>
+                <label>
+                    <input class="with-gap" name="rblSearchType" type="radio" value="Competency" ng-model="searchType"/>
+                    <span>Competency</span>
+                </label>
+                <label>
+                    <input class="with-gap" name="rblSearchType" type="radio" value="Training" ng-model="searchType"/>
+                    <span>Training</span>
+                </label>
+              </p> 
+            </div>         
+            <div class="input-field col s12 m6 l6" ng-show="trainDisabled">            
+                <select name="selectCompLevel" id="ddlAssetLocale" ng-model="selectedCompLevel"
+                    ng-change="">
+                <option value="" disabled selected>-- Select Competency Level --</option>
+                <option value="E0" >E0</option>
+                <option value="E1" >E1</option>
+                <option value="E2" >E2</option>
+                <option value="E3" >E3</option>
+                <option value="E4" >E4</option>
+                </select>
+                <label for="selectCompLevel"> Competency Level </label>
+            </div>   
       </div>
       <div class="row">
         <div class="input-field col s12 m10 m8">

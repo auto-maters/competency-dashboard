@@ -2,7 +2,7 @@
 const coreApp = angular.module('angularApp', ['ngRoute']);
 
 coreApp.config(($routeProvider, $locationProvider) => {
-  $routeProvider.when('/reports/comp/:compName/level/:compLevel', {
+  $routeProvider.when('/reports/comp/:compGroup/:compName/level/:compLevel', {
     templateUrl: '/templates/reports.tpl.html',
     controller: 'reportsController',
   });

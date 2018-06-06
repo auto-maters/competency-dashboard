@@ -14,26 +14,53 @@ coreApp.controller('reportsController', ['$scope', '$q', '$timeout', '$routePara
   };
 
   $scope.competencyList = [];
-  $scope.selectedComp = null;
+  $scope.selectedListComp = null;
+  $scope.selectedListTraining = null;
   $scope.selectedCompLevel = null;
+  $scope.searchType = 'Competency';
+  $scope.compDisabled = false;
+  $scope.trainDisabled = true;
+
+  $("input[name='rblSearchType']").on('change', () => {
+    if ($scope.searchType === 'Competency') {
+      $scope.compDisabled = false;
+      $scope.trainDisabled = true;
+      $scope.$apply();
+    } else if ($scope.searchType === 'Training') {
+      $scope.compDisabled = true;
+      $scope.trainDisabled = false;
+      $scope.$apply();
+    }
+  });
 
   function initializeData() {
-    const requests = [CompetencyData.getCompetencyList()];
+    const requests = [CompetencyData.getCompetencyList(), CompetencyData.getTrainingList()];
 
     $q.all(requests).then((results) => {
       $scope.competencyList = results[0];
+      $scope.trainingList = results[1];
       $timeout(() => {
         $scope.reRender();
       }, 300);
 
       if (Object.keys($routeParams).length !== 0) {
-        $scope.selectedComp = $routeParams.compName || null;
-        $scope.selectedCompLevel = $routeParams.compLevel || null;
-        $scope.selectedTraining = $routeParams.trainName || null;
-        $timeout(() => {
-          $scope.reRender();
-        }, 1000);
+        if ($routeParams.trainName) {
+          $scope.selectedListTraining = [{ training_name: $routeParams.trainName }];
+          $scope.searchType = 'Training';
+          $scope.compDisabled = true;
+          $scope.trainDisabled = false;
+        } else if ($routeParams.compName && $routeParams.compGroup) {
+          $scope.selectedListComp = [{ comp_name: $routeParams.compName, comp_group: $routeParams.compGroup }]; // eslint-disable-line
+          $scope.selectedCompLevel = $routeParams.compLevel;
+          $scope.searchType = 'Competency';
+          $scope.compDisabled = false;
+          $scope.trainDisabled = true;
+        }
       }
+
+      $timeout(() => {
+        $scope.reRender();
+      }, 1000);
     }).catch((error) => {
       console.log('Error in initializing method', error.message);
       M.toast({ html: 'Some error occurred, please refresh the page', classes: 'rounded' });

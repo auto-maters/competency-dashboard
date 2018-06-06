@@ -12,14 +12,14 @@
     <div class="row" ng-if="compInfo.type !== 'Training'">
         <div class="col s6 center">
             <ul>
-                <li><a href="/reports/comp/{{compInfo.comp}}/level/E0">E0</a> - {{compInfo.E0 || 0}}</li>
-                <li><a href="/reports/comp/{{compInfo.comp}}/level/E1">E1</a> - {{compInfo.E1 || 0}}</li>
+                <li><a href="/reports/comp/{{compInfo.group}}/{{compInfo.comp}}/level/E0">E0</a> - {{compInfo.E0 || 0}}</li>
+                <li><a href="/reports/comp/{{compInfo.group}}/{{compInfo.comp}}/level/E1">E1</a> - {{compInfo.E1 || 0}}</li>
             </ul>
         </div>
         <div class="col s6">
             <ul>
-                <li><a href="/reports/comp/{{compInfo.comp}}/level/E2">E2</a> - {{compInfo.E2 || 0}}</li>
-                <li><a href="/reports/comp/{{compInfo.comp}}/level/E3">E3</a> - {{compInfo.E3 || 0}}</li>
+                <li><a href="/reports/comp/{{compInfo.group}}/{{compInfo.comp}}/level/E2">E2</a> - {{compInfo.E2 || 0}}</li>
+                <li><a href="/reports/comp/{{compInfo.group}}/{{compInfo.comp}}/level/E3">E3</a> - {{compInfo.E3 || 0}}</li>
             </ul>
         </div>
     </div>

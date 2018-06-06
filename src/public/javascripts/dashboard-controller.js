@@ -57,6 +57,7 @@ coreApp.controller('dashboardController', ['$scope', '$q', '$timeout', 'Competen
           $scope.competencyDetail[compName].type = 'Competency';
           $scope.competencyDetail[compName].comp = compName;
           $scope.competencyDetail[compName][level] = comp.comp_level_count;
+          $scope.competencyDetail[compName].group = comp.comp_group;
           $scope.competencyDetail[compName].details = [];
           $scope.competencyDetail[compName].details.push({ level, level_count: comp.comp_level_count }); // eslint-disable-line
           $scope.competencyDetail[compName].total = parseInt(comp.comp_level_count, 10);
