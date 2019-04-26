@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "devstart": "nodemon ./bin/www"
+    "devstart": "nodemon ./bin/www",
+    "build": "gulp build:components"
   },
   "dependencies": {
     "babel-core": "^6.1.21",
@@ -16,16 +17,17 @@
     "express": "~4.16.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
-    "gulp-clean-css": "^2.3.2",
+    "gulp-clean-css": "^4.0.0",
     "gulp-eslint": "^3.0.1",
-    "gulp-imagemin": "^3.1.1",
-    "gulp-mocha": "^3.0.1",
+    "gulp-imagemin": "^5.0.3",
+    "gulp-mocha": "^6.0.0",
     "gulp-sass": "^3.0.0",
     "gulp-sourcemaps": "^1.6.0",
     "gulp-uglify": "^2.0.0",
     "hbs": "~4.0.1",
     "http-errors": "~1.6.2",
     "install": "^0.11.0",
+    "moment": "^2.24.0",
     "morgan": "~1.9.0",
     "npm": "^6.0.0",
     "pg": "^6.0.3",

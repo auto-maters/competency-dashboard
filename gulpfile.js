@@ -4,7 +4,6 @@ const imagemin = require('gulp-imagemin');
 const uglify = require('gulp-uglify');
 const cleanCSS = require('gulp-clean-css');
 const pump = require('pump');
-
 /*  -----------------------  */
 
 /* BABEL TASKS  */
@@ -26,7 +25,6 @@ gulp.task('babelify-routes', () => {
   })).pipe(gulp.dest('lib/routes/'));
 });
 
-
 /*  -----------------------  */
 
 /* IMAGE COMPRESSION TASKS  */
@@ -38,6 +36,8 @@ gulp.task('compress-image', () => {
     .pipe(imagemin())
     .pipe(gulp.dest('lib/public/images/'));
 });
+
+console.log("test")
 
 /*  -----------------------  */
 
@@ -53,6 +53,8 @@ gulp.task('minify-js-vendor', () => {
   ]);
 });
 
+console.log("test1")
+
 /*  The purpose of this task is to minify CSS code that the project uses. */
 gulp.task('minify-css-vendor', () => {
   return gulp.src('src/public/vendor/**/*.css')
@@ -61,6 +63,8 @@ gulp.task('minify-css-vendor', () => {
     }))
     .pipe(gulp.dest('lib/public/vendor'));
 });
+
+console.log("test2")
 
 /*  The purpose of this task is to minify any user-built JavaScript code that the
     project uses. */
@@ -72,6 +76,8 @@ gulp.task('babelify-js', () => {
     .pipe(gulp.dest('lib/public/javascripts'));
 });
 
+console.log("test3")
+
 /*  The purpose of this task is to minify any user-built Stylesheets that the
     project uses. */
 gulp.task('minify-css', () => {
@@ -82,11 +88,22 @@ gulp.task('minify-css', () => {
     .pipe(gulp.dest('lib/public/stylesheets'));
 });
 
+
+console.log("test4")
+
 /*  The purpose of this task is to copy any user-built templates that the
 project uses. */
 gulp.task('copy-html', () => {
   return gulp.src('src/public/templates/*.html')
     .pipe(gulp.dest('lib/public/templates'));
+});
+
+
+console.log("test5")
+
+gulp.task('copy-sample', () => {
+  return gulp.src('src/public/Sample/*.xlsx')
+    .pipe(gulp.dest('lib/public/Sample'));
 });
 
 /* DEFAULT TASK */
@@ -104,11 +121,33 @@ gulp.task('watch', () => {
   gulp.watch(['./src/public/templates/*.html'], ['copy-html']);
 });
 
+console.log("test6")
+
 /*  -----------------------  */
 
 /* START TASK */
 
 // Make my default task to watch both folders
-gulp.task('default', ['watch', 'babelify-server-controllers', 'babelify-routes', 'compress-image', 'minify-js-vendor', 'minify-css-vendor', 'babelify-js', 'minify-css', 'copy-html']);
+gulp.task('default', ['watch', 
+'babelify-server-controllers', 
+'babelify-routes', 
+'compress-image', 
+'minify-js-vendor',
+'minify-css-vendor', 
+ 'babelify-js', 
+ 'minify-css', 
+ 'copy-html','copy-sample']);
+
+ gulp.task('build', [ 
+'babelify-server-controllers', 
+'babelify-routes', 
+'compress-image', 
+'minify-js-vendor',
+'minify-css-vendor', 
+ 'babelify-js', 
+ 'minify-css', 
+ 'copy-html','copy-sample']);
+
+console.log("test7")
 
 /*  -----------------------  */

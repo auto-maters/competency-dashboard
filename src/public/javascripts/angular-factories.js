@@ -1,5 +1,4 @@
 /* global angular coreApp */
-
 coreApp.factory('CompetencyData', ['$http', ($http) => {
   return {
     uploadCompData: (empCompData) => {
@@ -18,6 +17,24 @@ coreApp.factory('CompetencyData', ['$http', ($http) => {
         return error.status;
       });
     },
+    getReportData: (reportconfig) => {
+return new Promise((resolve,reject)=>{
+  $http({
+    method: 'POST',
+    url: '/reports/getReportData',
+    data: reportconfig,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    }).then((response) => 
+    {
+             resolve(response);
+    }).catch((error) => 
+    {
+    reject(error);
+    });
+})
+},
 
     getCompetencyList: () => {
       return $http({

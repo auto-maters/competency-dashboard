@@ -1,6 +1,7 @@
 /* global angular coreApp XLSX M */
 
 coreApp.controller('uploadController', ['$scope', '$timeout', 'CompetencyData', ($scope, $timeout, CompetencyData) => {
+
   angular.isUndefinedOrNullOrEmpty = function isUndefinedOrNullOrEmpty(val) {
     return angular.isUndefined(val) || val === null || val === '';
   };
@@ -14,6 +15,7 @@ coreApp.controller('uploadController', ['$scope', '$timeout', 'CompetencyData', 
       $scope.typeOfFile = 'Training';
     }, 500);
   }
+  
 
   $("input[type='checkbox']").on('change', () => {
     if ($scope.fileType) {

@@ -103,9 +103,10 @@ coreApp.controller('dashboardController', ['$scope', '$q', '$timeout', 'Competen
             { training_name: 'ITIL Certifications' },
             { training_name: 'SFDC Certifications' },
           ];
-
+          $scope.$apply();
           $timeout(() => {
             $scope.reRender();
+            $scope.$apply();
           }, 800);
         } else {
           console.log('Error in fill data to dashboard method');
